@@ -4,10 +4,24 @@ local core_config = {}
 function core_config.fonts(config)
   -- fonts
   config.font = wezterm.font_with_fallback {
+    -- for more information
+    -- https://github.com/microsoft/cascadia-code
+    -- https://github.com/ryanoasis/nerd-fonts/tree/master/src/unpatched-fonts/CascadiaCode
     {
-      family = "CaskaydiaCove Nerd Font",
+      family = "CaskaydiaCove NF",
       weight = "Bold"
     },
+    -- for more information
+    -- https://github.com/subframe7536/maple-font/
+    {
+      family = "Maple Mono SC NF",
+      weight = "Bold"
+    },
+    {
+      family = "Maple Mono NF",
+      weight = "Bold"
+    },
+    -- non-NF fonts
     {
       family = "Cascadia Mono",
       weight = "Bold"
