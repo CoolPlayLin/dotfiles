@@ -1,9 +1,9 @@
-local saga_status, saga = pcall(require, "lspsaga")
-if not saga_status then
+local lspsaga_status, lspsaga = pcall(require, "lspsaga")
+if not lspsaga_status then
     return
 end
 
-saga.setup(
+lspsaga.setup(
     {
         move_in_saga = {prev = "<C-k>", next = "<C-j>"},
         finder_action_keys = {
