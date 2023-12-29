@@ -75,6 +75,7 @@ return require("packer").startup(
                 require("toggleterm").setup()
             end
         }
+        use "windwp/nvim-ts-autotag"
 
         if packer_bootstrap then
             require("packer").sync()

@@ -1,32 +1,27 @@
-local cmp_status_status, cmp = pcall(require, "cmp")
-if not cmp_status_status then
-    return
-end
-
-local snip_status_status, luasnip = pcall(require, "luasnip")
-if not snip_status_status then
-    return
-end
-
+local luasnip_status_status, luasnip = pcall(require, "luasnip")
 local lspkind_status, lspkind = pcall(require, "lspkind")
-if not lspkind_status then
-    return
-end
-
-require("luasnip.loaders.from_vscode").lazy_load()
-require("luasnip.loaders.from_snipmate").lazy_load()
-
-
+local cmp_status_status, cmp = pcall(require, "cmp")
+local autotag_status, autotag = pcall(require, "nvim-ts-autotag")
+local autopairs_status, autopairs = pcall(require, "nvim-autopairs")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local check_backspace = function()
     local col = vim.fn.col "." - 1
     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
+if not (autopairs_status or autotag_status or cmp_status_status or lspkind_status or luasnip_status_status) then
+    return
+end
+
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done {map_char = {tex = ""}})
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_snipmate").lazy_load()
+
 cmp.setup(
     {
         snippet = {
             expand = function(args)
-                require("luasnip").lsp_expand(args.body)
+                luasnip.lsp_expand(args.body)
             end
         },
         mapping = cmp.mapping.preset.insert(
@@ -73,10 +68,10 @@ cmp.setup(
         ),
         sources = cmp.config.sources(
             {
-                {name = "nvim_lsp"},
-                {name = "luasnip"},
-                {name = "path"},
-                {name = "buffer"}
+                { name = "nvim_lsp" },
+                { name = "luasnip" },
+                { name = "path" },
+                { name = "buffer" }
             }
         ),
         formatting = {
@@ -89,3 +84,28 @@ cmp.setup(
         }
     }
 )
+
+autopairs.setup ({
+    check_ts = true,
+    ts_config = {
+        lua = {"string", "source"},
+        javascript = {"string", "template_string"}
+    },
+    fast_wrap = {
+        map = "<M-e>",
+        chars = {"{", "[", "(", '"', "'"},
+        pattern = [=[[%'%"%)%>%]%)%}%,]]=],
+        end_key = "$",
+        keys = "qwertyuiopzxcvbnmasdfghjkl",
+        check_comma = true,
+        highlight = "Search",
+        highlight_grey = "Comment"
+    },
+    disable_filetype = {
+      "powershell",
+      "vim",
+      "TelescopePrompt"
+    }
+})
+
+autotag.setup()

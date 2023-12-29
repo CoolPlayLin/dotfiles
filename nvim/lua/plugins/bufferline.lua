@@ -3,7 +3,7 @@ if not bufferline_status then
     return
 end
 
-bufferline.setup {
+bufferline.setup ({
     options = {
         diagnostics = "nvim_lsp",
         offsets = {
@@ -15,4 +15,4 @@ bufferline.setup {
             }
         }
     }
-}
+})

@@ -3,7 +3,7 @@ if not gitsigns_status then
     return
 end
 
-gitsigns.setup {
+gitsigns.setup ({
     signs = {
         add = {text = "+"},
         change = {text = "~"},
@@ -11,4 +11,4 @@ gitsigns.setup {
         topdelete = {text = "‾"},
         changedelete = {text = "~"}
     }
-}
+})
