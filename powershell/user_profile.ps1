@@ -44,10 +44,7 @@ function Push-Git {
     $remote = "origin",
     $branch = "master"
   )
-  if (Get-Item ".git" -ErrorAction SilentlyContinue)
-  {
-    git push $remote $branch
-  }
+  git push $remote $branch
 }
 
 function Open-Server {
