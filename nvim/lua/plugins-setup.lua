@@ -9,6 +9,7 @@ local ensure_packer = function()
     return false
 end
 local packer_bootstrap = ensure_packer()
+
 vim.cmd(
     [[
   augroup packer_user_config
@@ -17,9 +18,11 @@ vim.cmd(
   augroup end
 ]]
 )
+
 return require("packer").startup(
     function(use)
         use "wbthomason/packer.nvim"
+        use "nvim-tree/nvim-web-devicons"
         use {
             "nvim-lualine/lualine.nvim",
             requires = {"nvim-tree/nvim-web-devicons"}
@@ -70,13 +73,15 @@ return require("packer").startup(
         }
         use {
             "akinsho/toggleterm.nvim",
-            tag = "*",
             config = function()
                 require("toggleterm").setup()
             end
         }
         use "windwp/nvim-ts-autotag"
-
+        use {
+            "folke/trouble.nvim",
+            requires = { "nvim-tree/nvim-web-devicons" },
+        }
         if packer_bootstrap then
             require("packer").sync()
         end

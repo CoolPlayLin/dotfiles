@@ -20,6 +20,7 @@ require("plugins.treesitter")
 require("plugins.toggleterm")
 require("plugins.neoformat")
 require("plugins.neogit")
+require("plugins.trouble")
 
 require("plugins.lsp.lspconfig")
 require("plugins.lsp.lspsaga")
