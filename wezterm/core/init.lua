@@ -35,7 +35,7 @@ end
 
 function core_config.mouse(config)
   config.mouse_bindings = {
-    -- Right click to paste from Clipboard
+    -- Right click to paste with mouse from Clipboard
     {
       event = { Down = { streak = 1, button = "Right"} },
       mods = "NONE",

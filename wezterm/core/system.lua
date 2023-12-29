@@ -1,5 +1,5 @@
 local wezterm = require("wezterm")
-
+local os = require("os")
 local system_config = {}
 
 function system_config.windows(config)
@@ -12,6 +12,10 @@ function system_config.windows(config)
     {
       label = "Windows Powershell",
       args = { "powershell.exe", "-NoLogo" }
+    },
+    {
+      label = "Command Prompt",
+      args = { table.concat({os.getenv("SystemRoot"), "\\System32\\cmd.exe"}) }
     }
   }
 end
