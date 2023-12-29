@@ -39,7 +39,7 @@ function Select-Items {
   Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
 
-function Git-Push {
+function Push-Git {
   param (
     $remote = "origin",
     $branch = "master"
@@ -47,6 +47,14 @@ function Git-Push {
   if (Get-Item ".git" -ErrorAction SilentlyContinue)
   {
     git push $remote $branch
+  }
+}
+
+function Open-Server {
+  if (Get-Item dist -ErrorAction SilentlyContinue){
+    live-server --open=dist
+  } else {
+    live-server --open=.
   }
 }
 # Settings
@@ -64,8 +72,9 @@ Set-Alias -Name cl -Value cls
 Set-Alias -Name open -Value OpenCurrentFolder
 Set-Alias -Name o -Value OpenCurrentFolder
 Set-Alias -Name which -Value Select-Items
-Set-Alias -Name push -Value Git-Push
-Set-Alias -Name p -Value Git-Push
+Set-Alias -Name push -Value Push-Git
+Set-Alias -Name p -Value Push-Git
+Set-Alias -Name serve -Value Open-Server
 
 # Resolve conflict with ni(https://github.com/antfu/ni)
 Remove-Alias -Name ni -Force -ErrorAction Ignore
