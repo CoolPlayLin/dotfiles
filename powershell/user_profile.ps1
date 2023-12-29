@@ -39,12 +39,15 @@ function Select-Items {
   Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
 
-function Github-Push {
+function Git-Push {
   param (
     $remote = "origin",
     $branch = "master"
   )
-  git push $remote $branch
+  if (Get-Item ".git" -ErrorAction SilentlyContinue)
+  {
+    git push $remote $branch
+  }
 }
 # Settings
 Set-PSReadLineOption -PredictionSource History
@@ -61,7 +64,8 @@ Set-Alias -Name cl -Value cls
 Set-Alias -Name open -Value OpenCurrentFolder
 Set-Alias -Name o -Value OpenCurrentFolder
 Set-Alias -Name which -Value Select-Items
-Set-Alias -Name p -Value Github-Push
+Set-Alias -Name push -Value Git-Push
+Set-Alias -Name p -Value Git-Push
 
 # Resolve conflict with ni(https://github.com/antfu/ni)
 Remove-Alias -Name ni -Force -ErrorAction Ignore
