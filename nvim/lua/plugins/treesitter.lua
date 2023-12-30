@@ -17,7 +17,8 @@ require("nvim-treesitter.configs").setup ({
         "yaml",
         "vue",
         "css",
-        "html"
+        "html",
+        "tsx"
     }, -- optional
     auto_install = true,
     highlight = {

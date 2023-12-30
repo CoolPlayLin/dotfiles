@@ -38,7 +38,6 @@ return require("packer").startup(
             "neovim/nvim-lspconfig",
             "nvimdev/lspsaga.nvim",
             "christoomey/vim-tmux-navigator",
-            "sbdchd/neoformat",
             "TimUntersberger/neogit",
             "navarasu/onedark.nvim",
             "rcarriga/nvim-notify",
@@ -74,6 +73,17 @@ return require("packer").startup(
             requires = { "nvim-lua/plenary.nvim", "debugloop/telescope-undo.nvim" }
         }
         use {
+            "sbdchd/neoformat",
+            config = function()
+              vim.cmd([[
+                augroup NeoformatAutogroup
+                  autocmd!
+                  autocmd BufWritePre * undojoin | Neoformat
+                augroup END
+              ]])
+            end
+        }
+        use {
             "nvim-telescope/telescope-file-browser.nvim",
             requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
             }
@@ -89,6 +99,11 @@ return require("packer").startup(
         use {
           "nvim-treesitter/nvim-treesitter-context", --show code context
           "gbprod/yanky.nvim",
+          "norcalli/nvim-colorizer.lua",
+          "folke/which-key.nvim",
+          "folke/zen-mode.nvim",
+          "karb94/neoscroll.nvim",
+          "sindrets/diffview.nvim"
         }
 
         if packer_bootstrap then
