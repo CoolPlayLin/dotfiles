@@ -54,6 +54,7 @@ function Open-Server {
     live-server --open=.
   }
 }
+
 # Settings
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
