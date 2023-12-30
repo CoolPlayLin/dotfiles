@@ -3,14 +3,14 @@ local lspkind_status, lspkind = pcall(require, "lspkind")
 local cmp_status_status, cmp = pcall(require, "cmp")
 local autotag_status, autotag = pcall(require, "nvim-ts-autotag")
 local autopairs_status, autopairs = pcall(require, "nvim-autopairs")
+if not (autopairs_status or autotag_status or cmp_status_status or lspkind_status or luasnip_status_status) then
+    return
+end
+
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local check_backspace = function()
     local col = vim.fn.col "." - 1
     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-end
-
-if not (autopairs_status or autotag_status or cmp_status_status or lspkind_status or luasnip_status_status) then
-    return
 end
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done {map_char = {tex = ""}})

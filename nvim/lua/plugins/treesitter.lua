@@ -4,7 +4,7 @@ if not nvim_treesitter_status then
 end
 
 require("nvim-treesitter.install").compilers = {"clang", "gcc"}
-require("nvim-treesitter.configs").setup {
+require("nvim-treesitter.configs").setup ({
     ensure_installed = {
         "c",
         "lua",
@@ -24,4 +24,4 @@ require("nvim-treesitter.configs").setup {
         enable = true,
         additional_vim_regex_highlighting = false
     }
-}
+})

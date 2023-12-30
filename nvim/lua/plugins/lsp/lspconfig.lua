@@ -19,6 +19,7 @@ local on_attach = function(client, bufnr)
         keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
     end
 end
+
 lspconfig.pyright.setup(
     {
         settings = {

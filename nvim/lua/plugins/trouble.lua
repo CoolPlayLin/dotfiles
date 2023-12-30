@@ -1,8 +1,9 @@
 local trouble_status, trouble = pcall(require, "trouble")
-local keymap = vim.keymap
 if not trouble_status then
   return
 end
+
+local keymap = vim.keymap
 
 local handler = {}
 function handler.quickfix()

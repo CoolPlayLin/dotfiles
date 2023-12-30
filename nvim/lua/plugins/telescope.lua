@@ -18,6 +18,7 @@ telescope.setup({
     }
   }
 })
+
 keymap.set("n", "<leader>ff", builtin.find_files, {})
 keymap.set("n", "<leader>fg", builtin.live_grep, {}) -- require ripgrep
 keymap.set("n", "<leader>fb", builtin.buffers, {})
