@@ -22,7 +22,6 @@ vim.cmd(
 return require("packer").startup(
     function(use)
         use "wbthomason/packer.nvim"
-        use "nvim-tree/nvim-web-devicons"
         use {
             "nvim-lualine/lualine.nvim",
             requires = {"nvim-tree/nvim-web-devicons"}
@@ -42,8 +41,10 @@ return require("packer").startup(
             "sbdchd/neoformat",
             "TimUntersberger/neogit",
             "navarasu/onedark.nvim",
-            "rcarriga/nvim-notify"
-            }
+            "rcarriga/nvim-notify",
+            "akinsho/toggleterm.nvim",
+            "j-hui/fidget.nvim"
+          }
         use {
             "hrsh7th/nvim-cmp",
             "hrsh7th/cmp-nvim-lsp",
@@ -59,25 +60,23 @@ return require("packer").startup(
                 ts_update()
             end
         }
-        use "p00f/nvim-ts-rainbow"
         use {
             "numToStr/Comment.nvim",
             "windwp/nvim-autopairs",
+            "windwp/nvim-ts-autotag",
+            "p00f/nvim-ts-rainbow",
             "akinsho/bufferline.nvim",
             "lewis6991/gitsigns.nvim",
             "onsails/lspkind.nvim"
         }
         use {
             "nvim-telescope/telescope.nvim",
-            requires = {{"nvim-lua/plenary.nvim"}}
+            requires = { "nvim-lua/plenary.nvim", "debugloop/telescope-undo.nvim" }
         }
         use {
-            "akinsho/toggleterm.nvim",
-            config = function()
-                require("toggleterm").setup()
-            end
-        }
-        use "windwp/nvim-ts-autotag"
+            "nvim-telescope/telescope-file-browser.nvim",
+            requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+            }
         use {
             "folke/trouble.nvim",
             requires = { "nvim-tree/nvim-web-devicons" },
@@ -85,8 +84,13 @@ return require("packer").startup(
         use {
             'nvimdev/dashboard-nvim',
             event = 'VimEnter',
-            requires = {'nvim-tree/nvim-web-devicons'}
+            requires = { "nvim-tree/nvim-web-devicons" }
         }
+        use {
+          "nvim-treesitter/nvim-treesitter-context", --show code context
+          "gbprod/yanky.nvim",
+        }
+
         if packer_bootstrap then
             require("packer").sync()
         end

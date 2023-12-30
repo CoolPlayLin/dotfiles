@@ -120,3 +120,5 @@ lspconfig.powershell_es.setup {
 }
 
 lspconfig.tailwindcss.setup({})
+
+vim.lsp.set_log_level('debug')
