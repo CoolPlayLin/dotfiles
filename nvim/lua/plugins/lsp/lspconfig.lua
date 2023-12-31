@@ -32,6 +32,14 @@ local on_attach = function(client, bufnr)
     end
 end
 
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.yamlls.setup({})
+lspconfig.jsonls.setup({})
+lspconfig.html.setup({})
+lspconfig.tailwindcss.setup({})
+lspconfig.cssls.setup({})
+
 lspconfig.pyright.setup(
     {
         settings = {
@@ -46,23 +54,19 @@ lspconfig.pyright.setup(
     }
 )
 
-lspconfig.yamlls.setup({})
-lspconfig.jsonls.setup({})
-lspconfig.html.setup({})
-lspconfig.cssls.setup({})
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 lspconfig.cssls.setup(
     {
         capabilities = capabilities
     }
 )
+
 --Enable (broadcasting) snippet capability for completion
 lspconfig.html.setup(
     {
         capabilities = capabilities
     }
 )
+
 lspconfig.eslint.setup(
     {
         --- ...
@@ -77,8 +81,9 @@ lspconfig.eslint.setup(
         end
     }
 )
+
 -- lua
-lspconfig.lua_ls.setup {
+lspconfig.lua_ls.setup ({
   on_init = function(client)
     local path = client.workspace_folders[1].name
     if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
@@ -107,27 +112,25 @@ lspconfig.lua_ls.setup {
     end
     return true
   end
-}
+})
 
-lspconfig.vuels.setup {
+lspconfig.vuels.setup ({
     filetypes = {"typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json"}
-}
+})
 
-lspconfig.denols.setup {
+lspconfig.denols.setup ({
     on_attach = on_attach,
     root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
-}
+})
 
-lspconfig.tsserver.setup {
+lspconfig.tsserver.setup ({
     on_attach = on_attach,
     root_dir = lspconfig.util.root_pattern("package.json") or lspconfig.util.root_pattern("index.html"),
     single_file_support = false,
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
-}
+})
 
-lspconfig.powershell_es.setup {
+lspconfig.powershell_es.setup ({
     bundle_path = vim.env.PowerShellEditorServices,
     shell = "pwsh.exe"
-}
-
-lspconfig.tailwindcss.setup({})
+})

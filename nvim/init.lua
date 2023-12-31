@@ -1,6 +1,3 @@
--- Packer
-require("plugins-setup")
-
 -- loading basic config
 require("core.base")
 require("core.keymaps")
@@ -33,3 +30,9 @@ require("plugins.lsp.lspconfig")
 require("plugins.lsp.lspsaga")
 require("plugins.lsp.mason")
 require("plugins.lsp.fidget")
+
+-- custom plugins
+require("core.CoolPlayLin")
+
+-- Packer
+require("plugins-setup")
