@@ -1,5 +1,15 @@
 {
-    "cSpell.words": [
-        "dotfiles"
-    ],
+    "workbench.sideBar.location": "right",
+    "workbench.colorTheme": "GitHub Dark Default",
+    "editor.fontFamily": "Maple Mono SC NF",
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontFamily": "CaskaydiaCove Nerd Font",
+    "files.autoSave": "afterDelay",
+    "workbench.iconTheme": "material-icon-theme",
+    "liveServer.settings.NoBrowser": true,
+    "editor.cursorSmoothCaretAnimation": "explicit",
+    "editor.formatOnType": true,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "merge-conflict.autoNavigateNextConflict.enabled": true,
+    "cSpell.language": "en-US",
 }

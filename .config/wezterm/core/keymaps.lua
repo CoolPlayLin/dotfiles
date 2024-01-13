@@ -1,5 +1,4 @@
 local wezterm = require("wezterm")
-
 local action = wezterm.action
 local utils = require("core.utils")
 local keymaps_config = {}
